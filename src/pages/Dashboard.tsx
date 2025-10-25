@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, TrendingUp, Package, Plus, Award, Crosshair, Calendar, Heart, MessageCircle, Eye, Podcast, HelpCircle, ArrowRight } from "lucide-react";
+import { Target, TrendingUp, Calendar, Heart, MessageCircle, Eye, Plus, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import BottomNav from "@/components/BottomNav";
 
@@ -53,35 +53,27 @@ const Dashboard = () => {
               <p className="text-xs text-muted-foreground">Your Partner in Shooting</p>
             </div>
           </div>
-          
           <div className="w-10 h-10 rounded-full bg-gradient-primary shadow-soft flex items-center justify-center text-primary-foreground font-semibold">
             JD
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-8 space-y-6">
-        {/* Welcome Section */}
+      <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+        {/* Welcome */}
         <div className="animate-fade-in">
-          <h2 className="text-3xl font-bold text-foreground mb-2">
-            Hi, John! 👋
-          </h2>
-          <p className="text-muted-foreground">
-            Welcome back to the range!
-          </p>
+          <h2 className="text-3xl font-bold text-foreground mb-2">Hi, John! 👋</h2>
+          <p className="text-muted-foreground">Welcome back to the range!</p>
         </div>
 
         {/* Upcoming Events */}
         <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
           <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-primary" />
-                Upcoming Events 🎯
-              </h3>
-            </div>
+            <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 mb-4">
+              <Calendar className="w-5 h-5 text-primary" /> Upcoming Events 🎯
+            </h3>
             <div className="flex gap-3 overflow-x-auto pb-2">
-              {upcomingEvents.map((event) => (
+              {upcomingEvents.map(event => (
                 <Card key={event.id} className="bg-secondary border-0 min-w-[280px] flex-shrink-0">
                   <CardContent className="p-4">
                     <div className="text-xs font-semibold text-primary mb-2">{event.date}</div>
@@ -98,25 +90,17 @@ const Dashboard = () => {
         {/* Community Highlights */}
         <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-              Community Highlights ⭐
-            </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">Community Highlights ⭐</h3>
             <div className="space-y-4">
-              {communityHighlights.map((post) => (
+              {communityHighlights.map(post => (
                 <div key={post.id} className="flex gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground text-sm font-semibold flex-shrink-0">
-                    {post.avatar}
-                  </div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground text-sm font-semibold flex-shrink-0">{post.avatar}</div>
                   <div className="flex-1">
                     <p className="font-semibold text-foreground text-sm mb-1">{post.user}</p>
                     <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{post.preview}</p>
                     <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Heart className="w-3 h-3" /> {post.likes}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MessageCircle className="w-3 h-3" /> {post.comments}
-                      </span>
+                      <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {post.likes}</span>
+                      <span className="flex items-center gap-1"><MessageCircle className="w-3 h-3" /> {post.comments}</span>
                     </div>
                   </div>
                 </div>
@@ -128,20 +112,14 @@ const Dashboard = () => {
         {/* Top Shooters */}
         <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-              Top Shooters This Week 🏆
-            </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Top Shooters This Week 🏆</h3>
             <div className="flex gap-3 overflow-x-auto pb-2">
               {topShooters.map((shooter, index) => (
                 <div key={shooter.id} className="text-center min-w-[80px] flex-shrink-0">
                   <div className="relative mb-2">
-                    <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold mx-auto">
-                      {shooter.avatar}
-                    </div>
+                    <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold mx-auto">{shooter.avatar}</div>
                     {index < 3 && (
-                      <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold">
-                        {index + 1}
-                      </div>
+                      <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold">{index + 1}</div>
                     )}
                   </div>
                   <p className="text-sm font-semibold text-foreground">{shooter.name}</p>
@@ -155,96 +133,19 @@ const Dashboard = () => {
         {/* Hot Gear */}
         <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-              Hot Gear This Week 🔥
-            </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Hot Gear This Week 🔥</h3>
             <div className="flex gap-3 overflow-x-auto pb-2">
-              {hotGear.map((item) => (
+              {hotGear.map(item => (
                 <Card key={item.id} className="bg-secondary border-0 min-w-[160px] flex-shrink-0 overflow-hidden">
                   <CardContent className="p-0">
-                    <div className="relative aspect-square">
-                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                      <div className="absolute top-2 right-2 bg-primary/90 backdrop-blur-sm rounded-full px-2 py-0.5 text-xs font-semibold text-primary-foreground">
-                        Hot
-                      </div>
-                    </div>
+                    <img src={item.image} alt={item.title} className="w-full h-32 object-cover rounded-t-lg" />
                     <div className="p-3">
                       <h4 className="text-sm font-semibold text-foreground line-clamp-1 mb-1">{item.title}</h4>
                       <p className="text-sm font-bold text-primary mb-1">${item.price}</p>
-                      <p className="text-xs text-muted-foreground flex items-center gap-1">
-                        <Eye className="w-3 h-3" /> {item.views} views
-                      </p>
+                      <p className="text-xs text-muted-foreground flex items-center gap-1"><Eye className="w-3 h-3" /> {item.views} views</p>
                     </div>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Performance Snapshot */}
-        <div className="grid grid-cols-2 gap-4 animate-slide-up">
-          <Card className="bg-gradient-primary border-0 shadow-card">
-            <CardContent className="p-6">
-              <p className="text-sm text-primary-foreground/80 mb-2">Weekly Average</p>
-              <p className="text-3xl font-bold text-primary-foreground mb-1">87%</p>
-              <div className="flex items-center gap-1 text-xs text-primary-foreground/80">
-                <TrendingUp className="w-3 h-3" />
-                <span>+3% vs last week</span>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-primary border-0 shadow-card">
-            <CardContent className="p-6">
-              <p className="text-sm text-primary-foreground/80 mb-2">Personal Best</p>
-              <p className="text-3xl font-bold text-primary-foreground mb-1">95%</p>
-              <p className="text-xs text-primary-foreground/80">March 10, 2025</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Trending Podcasts */}
-        <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-              Trending Podcasts 🎙️
-            </h3>
-            <div className="space-y-3">
-              {podcasts.map((podcast) => (
-                <div key={podcast.id} className="flex items-center gap-3 p-3 bg-secondary rounded-lg">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center text-2xl flex-shrink-0">
-                    {podcast.thumbnail}
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-foreground text-sm">{podcast.title}</p>
-                    <p className="text-xs text-muted-foreground">{podcast.duration}</p>
-                  </div>
-                  <span className="text-xs font-semibold text-primary">Trending 🔥</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Hot Questions */}
-        <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-              Hot Asks This Week 🔥❓
-            </h3>
-            <div className="space-y-4">
-              {hotQuestions.map((q) => (
-                <div key={q.id} className="flex gap-3">
-                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground text-sm font-semibold flex-shrink-0">
-                    {q.avatar}
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-foreground text-sm mb-1">{q.user}</p>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{q.question}</p>
-                    <p className="text-xs text-muted-foreground">{q.answers} answers</p>
-                  </div>
-                </div>
               ))}
             </div>
           </CardContent>
@@ -255,12 +156,8 @@ const Dashboard = () => {
           <Card className="bg-gradient-primary border-0 shadow-card hover:opacity-90 transition-all cursor-pointer animate-slide-up">
             <CardContent className="p-6 flex items-center justify-between">
               <div>
-                <h3 className="text-xl font-bold text-primary-foreground mb-1">
-                  Explore More Gears
-                </h3>
-                <p className="text-sm text-primary-foreground/80">
-                  Discover the latest equipment
-                </p>
+                <h3 className="text-xl font-bold text-primary-foreground mb-1">Explore More Gears</h3>
+                <p className="text-sm text-primary-foreground/80">Discover the latest equipment</p>
               </div>
               <ArrowRight className="w-6 h-6 text-primary-foreground" />
             </CardContent>
@@ -269,10 +166,7 @@ const Dashboard = () => {
       </main>
 
       {/* FAB */}
-      <Button
-        size="lg"
-        className="fixed bottom-24 right-6 w-14 h-14 rounded-full shadow-card bg-gradient-primary hover:opacity-90 z-20"
-      >
+      <Button size="lg" className="fixed bottom-24 right-6 w-14 h-14 rounded-full shadow-card bg-gradient-primary hover:opacity-90 z-20">
         <Plus className="w-6 h-6" />
       </Button>
 
