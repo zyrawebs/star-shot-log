@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Target, TrendingUp, Plus, Heart, MessageCircle, Eye, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import BottomNav from "@/components/BottomNav";
-import ShootingMap from "@/components/ShootingMap"; // map component for progress
-import logo from "@/assets/logo.png";
+import ShootingMap from "@/components/ShootingMap"; // placeholder or your existing map component
+import logo from "@/assets/logo.png"; // make sure your logo is here
 
 const Dashboard = () => {
   const upcomingEvents = [
@@ -96,7 +96,7 @@ const Dashboard = () => {
         <section>
           <h3 className="text-lg font-semibold text-foreground mb-4">Top Shooters This Week 🏆</h3>
           <div className="flex gap-4 overflow-x-auto pb-2">
-            {topShooters.map((shooter, idx) => (
+            {topShooters.map((shooter) => (
               <div key={shooter.id} className="flex flex-col items-center min-w-[80px]">
                 <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold mb-2">
                   {shooter.avatar}
