@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, TrendingUp, Package, Users, Plus, Activity, Award, Crosshair } from "lucide-react";
+import { Target, TrendingUp, Package, Users, Plus, Activity, Award, Crosshair, Home, ScrollText, ShoppingBag, Map } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
@@ -165,20 +165,24 @@ const Dashboard = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-around">
             <button className="flex flex-col items-center gap-1 text-primary">
-              <Target className="w-6 h-6" />
-              <span className="text-xs font-medium">Dashboard</span>
+              <Home className="w-6 h-6" />
+              <span className="text-xs font-medium">Home</span>
             </button>
             <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
-              <Activity className="w-6 h-6" />
-              <span className="text-xs">Log</span>
+              <ScrollText className="w-6 h-6" />
+              <span className="text-xs">Feed</span>
             </button>
             <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
-              <Package className="w-6 h-6" />
-              <span className="text-xs">Ammo</span>
+              <ShoppingBag className="w-6 h-6" />
+              <span className="text-xs">Marketplace</span>
             </button>
             <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
               <Users className="w-6 h-6" />
               <span className="text-xs">Community</span>
+            </button>
+            <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
+              <Map className="w-6 h-6" />
+              <span className="text-xs">Shooting Map</span>
             </button>
           </div>
         </div>
