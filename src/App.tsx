@@ -7,6 +7,9 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Community from "./pages/Community";
+import Marketplace from "./pages/Marketplace";
+import Feed from "./pages/Feed";
+import ShootingMap from "./pages/ShootingMap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +25,9 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/feed" element={<Feed />} />
+          <Route path="/map" element={<ShootingMap />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,13 +1,42 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, TrendingUp, Package, Users, Plus, Activity, Award, Crosshair, Home, ScrollText, ShoppingBag, Map } from "lucide-react";
+import { Target, TrendingUp, Package, Plus, Award, Crosshair, Calendar, Heart, MessageCircle, Eye, Podcast, HelpCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import BottomNav from "@/components/BottomNav";
 
 const Dashboard = () => {
-  const stats = [
-    { label: "Sessions", value: "24", icon: Activity, color: "text-primary" },
-    { label: "Rounds Fired", value: "3,842", icon: Crosshair, color: "text-accent" },
-    { label: "Ammo Left", value: "1,250", icon: Package, color: "text-primary" },
+  const upcomingEvents = [
+    { id: 1, date: "Mar 15", title: "Local Range Competition", location: "Springfield Range", registered: 24 },
+    { id: 2, date: "Mar 22", title: "Training Workshop", location: "Online", registered: 156 },
+    { id: 3, date: "Apr 5", title: "State Championship", location: "Capital City Range", registered: 89 },
+  ];
+
+  const communityHighlights = [
+    { id: 1, user: "Sarah M.", avatar: "SM", preview: "Just hit 95% accuracy at 50 yards! Consistency is key 🎯", likes: 142, comments: 23 },
+    { id: 2, user: "Mike C.", avatar: "MC", preview: "New personal best today! 250 rounds, zero malfunctions...", likes: 89, comments: 12 },
+  ];
+
+  const topShooters = [
+    { id: 1, name: "Alex R.", avatar: "AR", score: 987 },
+    { id: 2, name: "Jordan K.", avatar: "JK", score: 945 },
+    { id: 3, name: "Sam W.", avatar: "SW", score: 923 },
+    { id: 4, name: "Chris P.", avatar: "CP", score: 901 },
+  ];
+
+  const hotGear = [
+    { id: 1, title: "Precision Shooting Rest", price: 129.99, views: 234, image: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=300" },
+    { id: 2, title: "Tactical Range Bag", price: 89.99, views: 156, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300" },
+    { id: 3, title: "Competition Timer", price: 199.99, views: 312, image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=300" },
+  ];
+
+  const podcasts = [
+    { id: 1, title: "Advanced Shooting Techniques", duration: "45 min", thumbnail: "🎙️" },
+    { id: 2, title: "Competition Mindset", duration: "32 min", thumbnail: "🎙️" },
+  ];
+
+  const hotQuestions = [
+    { id: 1, user: "Taylor M.", avatar: "TM", question: "Best drills for improving trigger control?", answers: 12 },
+    { id: 2, user: "Jamie L.", avatar: "JL", question: "Recommended ammo for competition shooting?", answers: 8 },
   ];
 
   return (
@@ -31,162 +60,223 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+      <main className="max-w-7xl mx-auto px-6 py-8 space-y-6">
         {/* Welcome Section */}
         <div className="animate-fade-in">
           <h2 className="text-3xl font-bold text-foreground mb-2">
             Hi, John! 👋
           </h2>
           <p className="text-muted-foreground">
-            Track your progress and keep improving
+            Welcome back to the range!
           </p>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-slide-up">
-          {stats.map((stat, index) => (
-            <Card
-              key={stat.label}
-              className="bg-gradient-card border-0 shadow-card hover:shadow-soft transition-all duration-300 animate-scale-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <div className={`p-3 rounded-xl bg-secondary ${stat.color}`}>
-                    <stat.icon className="w-5 h-5" />
-                  </div>
-                  <TrendingUp className="w-4 h-4 text-primary" />
-                </div>
-                <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
-                <p className="text-3xl font-bold text-foreground">{stat.value}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Accuracy Card */}
+        {/* Upcoming Events */}
         <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
-          <CardContent className="p-8">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h3 className="text-xl font-semibold text-foreground mb-1">
-                  Accuracy Average
-                </h3>
-                <p className="text-sm text-muted-foreground">Last 30 days</p>
-              </div>
-              <div className="bg-gradient-primary rounded-2xl p-3 shadow-soft">
-                <Award className="w-6 h-6 text-primary-foreground" />
-              </div>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                <Calendar className="w-5 h-5 text-primary" />
+                Upcoming Events 🎯
+              </h3>
             </div>
-
-            {/* Circular Progress - Placeholder */}
-            <div className="flex items-center justify-center">
-              <div className="relative w-48 h-48">
-                <svg className="w-full h-full -rotate-90">
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="88"
-                    stroke="currentColor"
-                    strokeWidth="12"
-                    fill="none"
-                    className="text-secondary"
-                  />
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="88"
-                    stroke="url(#gradient)"
-                    strokeWidth="12"
-                    fill="none"
-                    strokeDasharray={553}
-                    strokeDashoffset={553 * (1 - 0.87)}
-                    strokeLinecap="round"
-                    className="transition-all duration-1000 ease-out"
-                  />
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="hsl(var(--primary))" />
-                      <stop offset="100%" stopColor="hsl(var(--accent))" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                    87%
-                  </span>
-                  <span className="text-sm text-muted-foreground mt-1">Accuracy</span>
-                </div>
-              </div>
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {upcomingEvents.map((event) => (
+                <Card key={event.id} className="bg-secondary border-0 min-w-[280px] flex-shrink-0">
+                  <CardContent className="p-4">
+                    <div className="text-xs font-semibold text-primary mb-2">{event.date}</div>
+                    <h4 className="font-semibold text-foreground mb-1">{event.title}</h4>
+                    <p className="text-sm text-muted-foreground mb-3">{event.location}</p>
+                    <Button size="sm" variant="outline" className="w-full">Register</Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </CardContent>
         </Card>
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-slide-up">
-          <Card className="bg-gradient-primary border-0 shadow-card hover:shadow-soft transition-all cursor-pointer group">
-            <CardContent className="p-6 flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-semibold text-primary-foreground mb-1">
-                  Log Training
-                </h3>
-                <p className="text-sm text-primary-foreground/80">
-                  Add a new session
-                </p>
-              </div>
-              <div className="bg-primary-foreground/20 rounded-full p-3 group-hover:scale-110 transition-transform">
-                <Plus className="w-6 h-6 text-primary-foreground" />
+        {/* Community Highlights */}
+        <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+              Community Highlights ⭐
+            </h3>
+            <div className="space-y-4">
+              {communityHighlights.map((post) => (
+                <div key={post.id} className="flex gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground text-sm font-semibold flex-shrink-0">
+                    {post.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground text-sm mb-1">{post.user}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{post.preview}</p>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Heart className="w-3 h-3" /> {post.likes}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <MessageCircle className="w-3 h-3" /> {post.comments}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Top Shooters */}
+        <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+              Top Shooters This Week 🏆
+            </h3>
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {topShooters.map((shooter, index) => (
+                <div key={shooter.id} className="text-center min-w-[80px] flex-shrink-0">
+                  <div className="relative mb-2">
+                    <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold mx-auto">
+                      {shooter.avatar}
+                    </div>
+                    {index < 3 && (
+                      <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold">
+                        {index + 1}
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-sm font-semibold text-foreground">{shooter.name}</p>
+                  <p className="text-xs text-primary font-semibold">{shooter.score}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Hot Gear */}
+        <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+              Hot Gear This Week 🔥
+            </h3>
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {hotGear.map((item) => (
+                <Card key={item.id} className="bg-secondary border-0 min-w-[160px] flex-shrink-0 overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="relative aspect-square">
+                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                      <div className="absolute top-2 right-2 bg-primary/90 backdrop-blur-sm rounded-full px-2 py-0.5 text-xs font-semibold text-primary-foreground">
+                        Hot
+                      </div>
+                    </div>
+                    <div className="p-3">
+                      <h4 className="text-sm font-semibold text-foreground line-clamp-1 mb-1">{item.title}</h4>
+                      <p className="text-sm font-bold text-primary mb-1">${item.price}</p>
+                      <p className="text-xs text-muted-foreground flex items-center gap-1">
+                        <Eye className="w-3 h-3" /> {item.views} views
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Performance Snapshot */}
+        <div className="grid grid-cols-2 gap-4 animate-slide-up">
+          <Card className="bg-gradient-primary border-0 shadow-card">
+            <CardContent className="p-6">
+              <p className="text-sm text-primary-foreground/80 mb-2">Weekly Average</p>
+              <p className="text-3xl font-bold text-primary-foreground mb-1">87%</p>
+              <div className="flex items-center gap-1 text-xs text-primary-foreground/80">
+                <TrendingUp className="w-3 h-3" />
+                <span>+3% vs last week</span>
               </div>
             </CardContent>
           </Card>
 
-          <Link to="/community">
-            <Card className="bg-gradient-card border border-primary/20 shadow-card hover:shadow-soft transition-all cursor-pointer group h-full">
-              <CardContent className="p-6 flex items-center justify-between h-full">
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    Community
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Connect with shooters
-                  </p>
-                </div>
-                <div className="bg-secondary rounded-full p-3 group-hover:scale-110 transition-transform">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
+          <Card className="bg-gradient-primary border-0 shadow-card">
+            <CardContent className="p-6">
+              <p className="text-sm text-primary-foreground/80 mb-2">Personal Best</p>
+              <p className="text-3xl font-bold text-primary-foreground mb-1">95%</p>
+              <p className="text-xs text-primary-foreground/80">March 10, 2025</p>
+            </CardContent>
+          </Card>
         </div>
+
+        {/* Trending Podcasts */}
+        <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+              Trending Podcasts 🎙️
+            </h3>
+            <div className="space-y-3">
+              {podcasts.map((podcast) => (
+                <div key={podcast.id} className="flex items-center gap-3 p-3 bg-secondary rounded-lg">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center text-2xl flex-shrink-0">
+                    {podcast.thumbnail}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground text-sm">{podcast.title}</p>
+                    <p className="text-xs text-muted-foreground">{podcast.duration}</p>
+                  </div>
+                  <span className="text-xs font-semibold text-primary">Trending 🔥</span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Hot Questions */}
+        <Card className="bg-gradient-card border-0 shadow-card animate-slide-up">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+              Hot Asks This Week 🔥❓
+            </h3>
+            <div className="space-y-4">
+              {hotQuestions.map((q) => (
+                <div key={q.id} className="flex gap-3">
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground text-sm font-semibold flex-shrink-0">
+                    {q.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground text-sm mb-1">{q.user}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{q.question}</p>
+                    <p className="text-xs text-muted-foreground">{q.answers} answers</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Explore More CTA */}
+        <Link to="/marketplace">
+          <Card className="bg-gradient-primary border-0 shadow-card hover:opacity-90 transition-all cursor-pointer animate-slide-up">
+            <CardContent className="p-6 flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-primary-foreground mb-1">
+                  Explore More Gears
+                </h3>
+                <p className="text-sm text-primary-foreground/80">
+                  Discover the latest equipment
+                </p>
+              </div>
+              <ArrowRight className="w-6 h-6 text-primary-foreground" />
+            </CardContent>
+          </Card>
+        </Link>
       </main>
 
-      {/* Navigation Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-card">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-around">
-            <button className="flex flex-col items-center gap-1 text-primary">
-              <Home className="w-6 h-6" />
-              <span className="text-xs font-medium">Home</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
-              <ScrollText className="w-6 h-6" />
-              <span className="text-xs">Feed</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
-              <ShoppingBag className="w-6 h-6" />
-              <span className="text-xs">Marketplace</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
-              <Users className="w-6 h-6" />
-              <span className="text-xs">Community</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
-              <Map className="w-6 h-6" />
-              <span className="text-xs">Shooting Map</span>
-            </button>
-          </div>
-        </div>
-      </nav>
+      {/* FAB */}
+      <Button
+        size="lg"
+        className="fixed bottom-24 right-6 w-14 h-14 rounded-full shadow-card bg-gradient-primary hover:opacity-90 z-20"
+      >
+        <Plus className="w-6 h-6" />
+      </Button>
+
+      <BottomNav active="home" />
     </div>
   );
 };
