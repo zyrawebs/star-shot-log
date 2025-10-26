@@ -52,6 +52,7 @@ export default {
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
+        'gradient-purple': 'var(--gradient-purple)',
         'gradient-soft': 'var(--gradient-soft)',
         'gradient-card': 'var(--gradient-card)',
       },
